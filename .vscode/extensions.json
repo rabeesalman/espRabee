@@ -4,5 +4,8 @@
     "recommendations": [
         "platformio.platformio-ide",
         "stxr.iconfont-preview"
+    ],
+    "unwantedRecommendations": [
+        "ms-vscode.cpptools-extension-pack"
     ]
 }

@@ -4,32 +4,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
-    <title>espRabee</title>
+    <title>firstupdate</title>
     <style>
         body {
             padding: 0px;
             top: 5px;
             text-align: center;
-            background-color: #cacaca;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(189 217 196);
         }
 
         .container {
-            width: 360px;
+            top: 10px;
+            position: relative;
+            width: 370px;
             height: 100%;
             display: inline-block;
             text-align: center;
-            border-radius: 5px;
-            background: #5c5c5c;
-            box-shadow: 6px 6px 12px #19191a,
-                -4px -4px 4px #ffffff;
+            border-radius: 15px;
+            background-image: linear-gradient(rgb(59 59 59), rgb(175 175 175));
+            border: 1px solid rgb(44, 43, 43);
         }
 
         .topsection {
+
+            top: 25px;
+            margin-right: 30px;
+            margin-bottom: 25px;
+            left: 15px;
             display: inline-block;
             position: relative;
-            width: 340px;
-            height: 110px;
-            border-radius: 5px;
+            width: 85px;
+            height: 85px;
+            border-radius: 10px;
+            background: #464646;
+            box-shadow: 3px 3px 10px #ffffff,
+                -3px -3px 10px #000000;
+        }
+
+        #fanpath {
+            transform-origin: 161.9px 125.1px;
+            animation-name: fanrotate;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+            color: #bebebe;
+
         }
 
         @keyframes fanrotate {
@@ -42,15 +63,6 @@
             }
         }
 
-        #fanpath {
-            transform-origin: 100px 100px;
-            color: rgb(21, 255, 0);
-            animation-name: fanrotate;
-            animation-duration: 2s;
-            animation-iteration-count: infinite;
-            animation-timing-function: linear;
-        }
-
         .fan,
         .power,
         .door,
@@ -59,17 +71,11 @@
         #egg {
             width: 75px;
             height: 70px;
-            top: 13px;
-            margin-right: 11px;
-            margin-left: 11px;
             position: relative;
             display: inline-block;
-            color: yellow;
+            color: #a4a5a5;
+            border-radius: 15px;
             padding: 3px 6px 10px 4px;
-            border-radius: 5px;
-            background: #2c2c2c;
-            box-shadow: 6px 6px 12px #000000,
-                -4px -4px 8px #aaaaaa;
         }
 
         .lamp {
@@ -78,31 +84,35 @@
             animation-iteration-count: 1;
             animation-timing-function: ease-in;
             animation-fill-mode: both;
+
         }
 
         @keyframes lampon {
             0% {
-                color: #31343b;
+                color: #bbb8b8;
             }
 
             100% {
-                color: #fcfc01;
+                color: #f00000;
+
             }
         }
 
         @keyframes lampoff {
             0% {
-                color: #fcfc01;
+                color: #f00000;
             }
 
             100% {
-                color: #31343b;
+
+                color: #bbb8b8;
+
             }
         }
 
         .eggrotate {
             transform-origin: 620px 900px;
-            animation-name: eggright;
+            /* animation-name: eggright; */
             animation-duration: 3s;
             animation-iteration-count: 1;
             animation-timing-function: ease-in-out;
@@ -129,142 +139,83 @@
             }
         }
 
-        .meters {
-            background: linear-gradient(180deg, #464646, #d3d1d1, #666666, #cacaca, #464646);
-            height: inherit;
+        .border {
+            padding: 5px;
+            position: relative;
+            display: inline-block;
+            top: 20px;
+            width: 320px;
+            height: max-content;
+            ;
             border-radius: 15px;
-            width: 90%;
+            background: #464646;
+            box-shadow: 3px 3px 10px #ffffff,
+                -3px -3px 10px #000000;
+        }
+
+        .leveltmp,
+        .levelhum,
+        .levelx {
+            top: 15px;
             position: relative;
-            left: 18px;
+            display: flex;
+            width: 10px;
+            height: 31px;
+            left: 10px;
+            margin-bottom: 30px;
+            transition: 1s cubic-bezier(0.63, -0.61, 0.34, 1.5);
+            background-color: rgb(255, 0, 0);
+            box-shadow: 1px 1px 13px #e00101, 2px 3px 14px #000000;
+
         }
 
-        .thermometerRed_base {
-            top: 5px;
-            display: inline-block;
+        .temptxt,
+        .humtxt,
+        .xtxt {
             position: relative;
-            width: 95%;
-            height: 3em;
-            border-radius: 5px;
+            display: inherit;
+            width: 300px;
+            text-align: center;
+            font-size: 20px;
+            color: rgb(255, 255, 255);
+
         }
 
-        .thermometerRed_liquid {
-            z-index: 1;
-            position: absolute;
-            transition: 1s ease-in-out;
-            display: inline-block;
-            top: 25%;
-            width: 100%;
-            height: 50%;
-            border-radius: 10px 0px 0px 10px;
-            background-color: rgb(173, 0, 0);
-            box-shadow: -1px -1px 1px -1px rgba(216, 215, 215, 0.247)inset, 4px 4px 5px 1px rgba(85, 1, 1, 0.986)inset, 3px 4px 10px -3px rgb(255, 0, 0), 0px 7px 0.1px 0px rgba(255, 255, 255, 0.616)inset;
-        }
+        .levelhum {
+            background-color: rgb(0, 238, 255);
+            box-shadow: 1px 1px 13px #18779c, 2px 3px 14px #000000;
 
-        .temptxt {
-            z-index: 1;
-            position: absolute;
-            text-align: right;
-            top: 12px;
-            right: 2%;
-            color: rgb(0, 0, 0);
-            font-weight: bold;
-            font-family: 'Times New Roman', Times, serif;
-            font-size: 1.3rem;
-            background: transparent;
-        }
-
-        .Redtube {
-            z-index: 0;
-            transform: translateY(50%);
-            display: inline-block;
-            position: relative;
-            width: 100%;
-            height: 50%;
-            border-radius: 10px 10px 10px 10px;
-            background-color: transparent;
-            box-shadow: -1px -1px 1px -1px rgba(216, 215, 215, 0.247)inset, 4px 4px 5px 1px rgba(83, 82, 82, 0.651)inset, 3px 4px 10px -3px rgb(199, 197, 197), 0px 7px 0.1px 0px rgba(255, 255, 255, 0.616)inset;
-            /* box-shadow: 3px -3px 3.5px -1px rgb(255, 255, 255)inset, 0px 3px 6px 0.5px rgba(0, 0, 0, 0.603)inset, -3px 5px 12px 0.1px rgb(95, 95, 97); */
-        }
-
-        .thermometerBlue_base {
-            top: 10px;
-            position: relative;
-            display: inline-block;
-            width: 95%;
-            height: 3em;
-            border-radius: 5px;
-        }
-
-        .thermometerBlue_liquid {
-            z-index: 1;
-            position: absolute;
-            transition: 1s ease-in-out;
-            display: inline-block;
-            top: 25%;
-            width: 100%;
-            height: 50%;
-            border-radius: 10px 0px 0px 10px;
-            background-color: rgb(0, 110, 255);
-            box-shadow: -1px -1px 1px -1px rgba(216, 215, 215, 0.247)inset, 4px 4px 5px 1px rgb(0, 40, 170)inset, 3px 4px 10px -3px rgb(0, 162, 255), 0px 7px 0.1px 0px rgba(255, 255, 255, 0.616)inset;
         }
 
         .humtxt {
-            z-index: 1;
-            position: absolute;
-            text-align: right;
-            top: 12px;
-            right: 2%;
-            color: rgb(0, 0, 0);
-            font-weight: bold;
-            font-family: 'Times New Roman', Times, serif;
-            font-size: 1.3rem;
-            background: transparent;
+            color: rgb(255, 255, 255);
+
         }
 
-        .tube {
-            z-index: 0;
-            transform: translateY(50%);
+        .levelx {
+            background-color: rgb(216, 214, 214);
+            box-shadow: 1px 1px 13px #b1b0b0, 2px 3px 14px #000000;
+        }
+
+        .xtxt {
+            color: rgb(255, 255, 255);
+        }
+
+        .txtgroup {
+            position: relative;
+        }
+
+        .txtlist {
+            top: 25px;
+            position: relative;
             display: inline-block;
-            position: relative;
-            width: 100%;
-            height: 50%;
-            border-radius: 10px 10px 10px 10px;
-            background-color: transparent;
-            box-shadow: -1px -1px 1px -1px rgba(216, 215, 215, 0.247)inset, 4px 4px 5px 1px rgba(83, 82, 82, 0.651)inset, 3px 4px 10px -3px rgb(199, 197, 197), 0px 7px 0.1px 0px rgba(255, 255, 255, 0.616)inset;
-        }
+            height: 220px;
+            width: 290px;
+            border-radius: 15px;
+            background: #464646;
+            box-shadow: 3px 3px 10px #ffffff,
+                -3px -3px 10px #000000;
 
-        .turningbase {
-
-            border: 1px solid black;
-            border-radius: 5px;
-            text-align: center;
-            font-weight: 600;
-            font-family: 'Times New Roman', Times, serif;
-            display: inline-block;
-            font-size: 3.5vmin;
-            overflow: hidden;
-            position: relative;
-            height: 25px;
-            width: 300px;
-            background-color: rgb(143, 143, 143);
-        }
-
-        .turninglevel {
-            z-index: 1;
-            position: absolute;
-            width: 100%;
-            transition: 1s ease-in-out;
-            height: inherit;
-            border-radius: 0.4rem 0rem 0rem 0.4rem;
-            background-color: rgb(206, 205, 205);
-        }
-
-        .turningtxt {
-            z-index: 2;
-            position: relative;
-            width: 100%;
-            height: 30px;
-            background-color: transparent;
         }
 
         #aa,
@@ -277,27 +228,24 @@
         #hh,
         #ii,
         #jj {
+            top: 10px;
             list-style: none;
-            left: -20px;
+            left: -22px;
             line-height: 20px;
             text-align: right;
-            top: -15px;
             text-decoration: none;
-            position: relative;
             width: 300px;
-            border-radius: 0px;
             text-size-adjust: inherit;
-            color: rgb(255, 255, 255);
-            background: #434443;
+            color: #ffffff;
+            background: transparent;
+            border-radius: 0px;
         }
 
         .setting {
-            
-            top: -20px;
+            top: 25px;
             width: 40%;
             height: 35px;
             left: -10px;
-            margin:0px;
             position: relative;
             cursor: pointer;
             text-align: center;
@@ -305,13 +253,13 @@
             font-family: 'Times New Roman', Times, serif;
             font-size: 1.3rem;
             border-radius: 5px;
-            background: linear-gradient(90deg, #7c7a7a, #bdbbbb, #7c7a7a);
+            background: linear-gradient(270deg, #302d2d, #c1bdbd, #343434);
             box-shadow: 4px 4px 3px #0c0c0c,
                 -4px -4px 3px #24232313;
         }
-        .clocksetting{
 
-            top: -20px;
+        .StartHatching {
+            top: 25px;
             width: 40%;
             height: 35px;
             right: -10px;
@@ -322,34 +270,36 @@
             font-family: 'Times New Roman', Times, serif;
             font-size: 1.3rem;
             border-radius: 5px;
-            background: linear-gradient(90deg, #7c7a7a, #bdbbbb, #7c7a7a);
+            background: linear-gradient(270deg, #302d2d, #c1bdbd, #343434);
             box-shadow: 4px 4px 3px #0c0c0c,
                 -4px -4px 3px #24232313;
         }
 
         .setting_list {
+
             visibility: hidden;
             width: 360px;
-            /* left: calc(50% - 180px); */
             color: rgb(255, 255, 255);
             text-align: inherit;
             font-size: 1.2rem;
             position: absolute;
             top: -400px;
-            left: -10px;
+            left: 5px;
         }
 
         .slist {
             list-style: none;
             padding-left: 0px;
+
         }
 
         li {
+
             position: relative;
             top: 0px;
             line-height: 2;
             border-radius: 8px;
-            background: linear-gradient(180deg, #383737, #141414);
+            background: linear-gradient(180deg, #383737, #dedede);
         }
 
         #f {
@@ -451,19 +401,36 @@
         }
 
         #birthday {
-
             font-size: 18px;
+        }
 
+        #demo {
+
+            color: rgb(0, 0, 0);
+            font-size: larger;
+            position: relative;
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+            display: inline-block;
+            top: 40px;
+            width: fit-content;
+            height: fit-content;
+            padding-bottom: 50px;
+        }
+
+        .network {
+            width: fit-content;
+            color: whitesmoke;
         }
     </style>
 
 <body>
+
     <div class="container">
 
         <div class="topsection">
-
-            <svg class="fan" width="75px" height="75px" viewBox="-35 -55 270 270">
-
+            <!-- <svg class="fan" width="75px" height="75px" viewBox="-35 -55 270 270">
                 <path id="fanpath" fill="currentColor" d="m51.002 0c-10.745 0-21.362 4.7013-29.9 
                 13.236-20.372 20.38-20.129 53.77 0.53515 
                 74.432 12.474 12.479 32.972 20.881 51.222 
@@ -485,9 +452,15 @@
                  1.2544 8.5351 3.5332 4.7028 4.708 4.7035 12.362 0 17.07-4.5578 4.5582-12.512 
                  4.5582-17.07 0-4.7042-4.708-4.7042-12.362 0-17.07 2.2786-2.2788 5.31-3.5332 
                  8.5351-3.5332z" />
+            </svg> -->
+            <svg class="fan" viewBox="55 10 211.66666 207.69792">
+                <path id="fanpath" fill="currentColor"
+                    d="m 169.34041,34.140724 c -1.97139,0.06101 -3.72254,0.401006 -5.1732,1.068193 -0.95832,0.44076 -1.84677,2.388869 -1.44572,3.627141 2.25282,6.95612 -0.47537,-0.09739 7.25992,17.975371 1.6912,3.951378 7.65148,18.862654 3.59382,30.904042 0,0 0.41013,0.200797 0.76212,0.373164 a 39.455021,39.454997 45.939252 0 0 -18.56103,-1.524099 c 1.53303,-16.328311 -5.69511,-31.57615 -20.70283,-41.768166 -8.13296,-2.504793 -29.83985,8.457419 -41.907454,20.21887 -4.722106,4.602309 -7.968244,9.326996 -8.347609,13.415325 -0.09746,1.050325 1.144916,2.79388 2.417814,3.065712 7.150598,1.527061 -0.321838,0.363298 19.197279,2.700731 4.26758,0.511043 20.16125,2.804855 28.56056,12.339588 0,0 0.37773,-0.25416 0.69509,-0.467558 a 39.455021,39.454997 45.939252 0 0 -1.20605,1.114287 39.455021,39.454997 45.939252 0 0 -9.37358,14.200185 c -13.37609,-9.49927 -30.200287,-10.86598 -46.535421,-2.96263 -8.675751,8.05698 -7.914073,51.90233 4.000289,60.33862 0.860873,0.60956 2.992214,0.40553 3.864062,-0.56092 4.897775,-5.42907 0.153533,0.46069 11.937368,-15.27465 2.576372,-3.44031 12.509752,-16.0578 24.966732,-18.56445 0,0 -0.034,-0.47056 -0.0701,-1.01692 a 39.455021,39.454997 45.939252 0 0 7.98869,16.99914 c -14.91622,6.83395 -24.51316,20.72069 -25.8363,38.82011 2.63968,11.54192 40.99164,32.80548 54.25486,26.70548 0.95834,-0.44075 1.84729,-2.38888 1.44624,-3.62715 -2.25282,-6.95613 0.47538,0.0979 -7.2599,-17.97486 -1.69121,-3.95136 -7.65151,-18.86317 -3.59384,-30.90456 0,0 -0.42442,-0.20564 -0.93571,-0.45751 a 39.455021,39.454997 45.939252 0 0 18.73662,1.58823 c -1.54098,16.33601 5.68685,31.59213 20.70083,41.78839 11.31543,3.48493 48.9062,-19.09791 50.25506,-33.6342 0.0975,-1.05032 -1.14491,-2.7939 -2.41781,-3.06571 -7.15058,-1.52706 0.32185,-0.36279 -19.19726,-2.70022 -4.2676,-0.51106 -20.16124,-2.80486 -28.56057,-12.33959 0,0 -0.39035,0.26476 -0.87811,0.5908 a 39.455021,39.454997 45.939252 0 0 1.38378,-1.24202 39.455021,39.454997 45.939252 0 0 9.37357,-14.20019 c 13.377,9.50282 30.20282,10.87161 46.54021,2.96715 8.67574,-8.05697 7.91406,-51.902847 -4.0003,-60.339144 -0.86089,-0.609556 -2.9917,-0.40555 -3.86355,0.560914 -4.89778,5.42905 -0.15404,-0.460157 -11.93787,15.275172 -2.57639,3.440318 -12.50925,16.057778 -24.96622,18.564438 0,0 0.0341,0.47048 0.072,1.0453 A 39.455021,39.454997 45.939252 0 0 192.5853,100.73504 C 207.50233,93.901312 217.09942,80.014411 218.42259,61.91438 216.07163,51.634879 185.39314,33.643924 169.34041,34.140724 Z m -8.45597,55.94526 a 35.464122,35.464104 88.321694 0 1 36.48795,34.410096 35.464122,35.464104 88.321694 0 1 -34.41061,36.48796 35.464122,35.464104 88.321694 0 1 -36.48745,-34.41062 35.464122,35.464104 88.321694 0 1 34.41011,-36.487436 z m 0.34521,11.781826 a 23.67753,23.677517 88.321694 0 0 -22.9735,24.3604 23.67753,23.677517 88.321694 0 0 24.36042,22.97401 23.67753,23.677517 88.321694 0 0 22.974,-24.36093 23.67753,23.677517 88.321694 0 0 -24.36092,-22.97348 z" />
 
             </svg>
+        </div>
 
+        <div class="topsection">
             <svg class="power" fill="currentColor" viewBox="0 -10 65 75" width="85px" height="85px">
 
                 <path
@@ -501,46 +474,28 @@
                     id="path6" />
 
             </svg>
+        </div>
 
+        <div class="topsection">
             <svg class="door" viewBox="5 -19 100 109" width="85px" height="85px" fill="currentColor">
                 <path
                     d="m 44.938957,52.81724 c 0.553209,-0.956194 0.479289,-2.186608 -0.205069,-3.3741 L 25.471708,16.081273 c -0.684358,-1.185108 -1.712087,-1.864698 -2.818506,-1.864698 -1.106418,0 -2.131764,0.67959 -2.816122,1.864698 L 0.57251565,49.44314 c -0.68435821,1.185108 -0.75827844,2.415522 -0.20506901,3.371716 0.55320943,0.958578 1.65485926,1.509403 3.02357576,1.509403 H 41.917766 c 1.368716,0 2.467981,-0.550825 3.021191,-1.507019 z M 22.653202,49.075923 c -1.383023,0 -2.501365,-1.118341 -2.501365,-2.501365 0,-1.380639 1.120726,-2.501365 2.501365,-2.501365 1.380638,0 2.501364,1.120726 2.501364,2.501365 0,1.383024 -1.120726,2.501365 -2.501364,2.501365 z M 24.76112,40.556021 H 20.547668 L 20.151837,25.023235 h 5.002729 z" />
                 <path
                     d="M 99.13202,0.546103 C 98.700421,0.193193 98.163904,0.004816 97.615463,0.0072 97.615463,0.0048 35.61547,0 35.61547,0 34.299214,0 33.230947,1.068266 33.230947,2.384523 V 19.98469 l 4.769047,8.25999 V 4.771431 h 34.8975 L 54.305365,8.393522 c -1.120726,0.219376 -1.92908,1.199416 -1.92908,2.339218 V 77.399292 H 37.999994 V 59.093306 h -4.769047 v 20.690509 c 0,1.318642 1.068267,2.384524 2.384523,2.384524 h 16.760815 v 6.459674 c 0,0.712972 0.317142,1.385408 0.867967,1.838467 0.431599,0.35291 0.968116,0.546056 1.516557,0.546056 0.152609,0 0.302834,-0.01431 0.455444,-0.04531 l 42.854654,-8.345832 c 1.120726,-0.219376 1.92908,-1.199415 1.92908,-2.339217 V 2.386951 C 100.00239,1.673978 99.682845,0.999158 99.13202,0.546099 Z M 62.794268,56.515636 c -2.112688,0 -3.824775,-2.95204 -3.824775,-6.597976 0,-3.645937 1.712087,-6.597976 3.824775,-6.597976 2.110303,0 3.822391,2.952039 3.822391,6.597976 0,3.645936 -1.712088,6.597976 -3.822391,6.597976 z" />
             </svg>
-
         </div>
 
-        <hr style="height:2px;border-width:0;color:gray;background-color:gray;width: 80%;">
+        <div class="topsection">
+            <svg class="lamp" fill="currentcolor" viewBox="20 0 183 259.3">
+                <path
+                    d="m 177.47349,201.93952 c 0,-4.92125 -5.37104,-8.96938 -11.90625,-8.96938 h -5.31812 V 178.02118 C 184.0087,161.2466 199.5662,133.33306 199.5662,101.74181 199.5397,50.465559 158.6087,8.899516 108.09974,8.899516 c -50.508954,0 -91.439996,41.566043 -91.439996,92.842294 0,31.61771 15.5575,59.53125 39.317084,76.30583 v 14.9225 h -5.318125 c -6.561667,0 -11.90625,4.02167 -11.90625,8.96938 0,4.92125 5.371041,8.96937 11.90625,8.96937 -6.561667,0 -11.90625,4.02167 -11.90625,8.96938 0,4.9477 5.371041,8.96937 11.90625,8.96937 -6.561667,0 -11.90625,4.02167 -11.90625,8.96938 0,4.92125 5.371041,8.96937 11.90625,8.96937 h 41.804166 c -0.15875,0.79375 -0.264583,1.64042 -0.264583,2.48708 v 6.85271 c 0,6.6675 5.371041,12.09146 11.906254,12.09146 h 7.99041 c 6.56167,0 11.90625,-5.45042 11.90625,-12.09146 v -6.85271 c 0,-0.84666 -0.0794,-1.66687 -0.26458,-2.48708 h 41.80417 c 6.56166,0 11.90625,-4.02167 11.90625,-8.96937 0,-4.92125 -5.37105,-8.96938 -11.90625,-8.96938 6.56166,0 11.90625,-4.02167 11.90625,-8.96937 0,-4.94771 -5.37105,-8.96938 -11.90625,-8.96938 6.56166,0 11.9327,-4.04812 11.9327,-8.96937 z M 33.037453,101.74181 c 0,-42.095211 33.602083,-76.200002 75.062287,-76.200002 41.46021,0 75.0623,34.131251 75.0623,76.200002 0,28.60146 -15.53105,53.52521 -38.47042,66.54271 v 24.68562 h -20.6375 v -45.53479 c 8.255,-5.95313 13.6525,-11.45646 13.6525,-26.82875 0,-5.79437 -8.33438,-6.16479 -8.81063,-0.635 -6.24416,-2.54 -13.17625,-3.94229 -20.42583,-3.94229 -8.17562,0 -15.901458,1.79917 -22.727707,4.94771 0,-0.13229 0,-0.23813 0,-0.37042 0,-0.0529 0,-0.0794 0,-0.13229 0,-6.05896 -8.837083,-5.82083 -8.837083,0.13229 0,15.37229 5.3975,20.87562 13.678957,26.82875 v 45.53479 H 71.534328 V 168.28452 C 48.568494,155.26702 33.037453,130.34327 33.037453,101.74181 Z m 52.916667,23.36271 c 6.667499,-3.38667 14.34042,-5.31813 22.51604,-5.31813 7.27604,0 14.15521,1.53459 20.29354,4.25979 -0.71437,9.2075 -4.52437,15.90146 -13.38791,18.415 l 0.13229,9.36625 v 41.14271 H 99.130369 v -41.14271 l 0.132292,-9.36625 C 90.743077,140.05347 86.880162,133.78285 85.95412,125.10452 Z m 63.26187,111.20437 H 66.983494 c -3.280833,0 -5.953125,-2.46062 -5.953125,-5.45042 0,-2.98979 2.672292,-5.45041 5.953125,-5.45041 h 82.258956 c 3.28084,0 5.95313,2.46062 5.95313,5.45041 0,2.9898 -2.69875,5.45042 -5.97959,5.45042 z m 0.0794,-21.56354 H 67.036411 c -3.280834,0 -5.953125,-2.46063 -5.953125,-5.45042 0,-2.98979 2.672291,-5.45041 5.953125,-5.45041 h 82.258959 c 3.28083,0 5.95312,2.46062 5.95312,5.45041 0.0265,3.01625 -2.67229,5.45042 -5.95312,5.45042 z"
+                    style="stroke-width:0.264583" />
+            </svg>
+        </div>
 
         <div class="topsection">
 
-            <svg class="lamp" width="85px" height="85px" viewBox="0 -15 100 125" fill="currentColor">
-                <path
-                    d="m 49.971051,2.2263821e-4 c -1.020892,0 -1.833778,0.84743900179 -1.819297,1.85839096179 v 7.33332 
-        c -0.0273,1.0310654 0.807189,1.8798784 1.848239,1.8798974 1.041043,0 1.879153,-0.848832 1.851856,-1.8798974 
-        v -7.33332 C 51.866549,0.82549664 51.014236,-0.01570936 49.971051,2.2263821e-4 Z 
-        M 82.878832,14.346798 77.477573,19.705129 c -0.716501,0.716464 -0.713295,1.871569 0.0077,2.585282 0.720203,
-        0.713 1.887531,0.716471 2.611401,0 l 5.233652,-5.184894 
-        c 1.208371,-1.165478 0.340157,-3.191677 -1.345575,-3.143956 -0.48077,-9.1e-5 -0.938016,0.211803 -1.105631,
-        0.385239 z m -68.205073,2.7658 5.233644,5.184873 
-        c 0.723947,0.708857 1.887762,0.706092 2.607783,0 0.720035,-0.712999 0.723422,-1.868804 0.0077,
-        -2.585268 L 17.28922,14.530884 c -0.419177,-0.318725 -0.887866,-0.548073 -1.327475,-0.560378 -1.661115,-0.0055 
-        -2.478837,1.995323 -1.287705,3.142092 z m 35.326233,1.213864 
-        c -17.350977,0 -31.456123,13.96955 -31.456158,31.155861 0.0112,9.81717 4.717424,19.026295 12.633832,24.893164 
-        l 5.067255,13.628242 H 63.736982 L 68.688498,74.461435 C 76.680646,68.604239 81.440869,59.354233 81.456169,
-        49.482323 81.456127,32.295333 67.350959,18.326462 49.999992,18.326462 Z M 1.8916296,47.681202
-        C 0.85446293,47.681202 0,48.486956 0,49.514537
-        c 0,1.027594 0.85446293,1.851939 1.8916296,1.829752 h 7.4001878 c 1.0371656,0 1.8880136,-0.802158 
-        1.8880136,-1.829752 0,-1.027581 -0.850848,-1.854801 -1.8880136,-1.833335 z m 88.8165564,0 c -1.037165,
-        0 -1.888021,0.805754 -1.888021,1.833335 0,1.027594 0.850856,1.851939 1.888021,1.829752 h 7.403793 
-        c 1.037165,0 1.888021,-0.802158 1.888021,-1.829752 0,-1.027581 -0.850856,-1.854801 -1.888021,-1.833335 z 
-        M 37.047888,91.666698 v 7.319001 h 25.904219 v -7.319001 z m 0.705295,10.985662 3.190089,6.33071 C 41.256483,
-        109.60669 41.898163,110 42.599811,110 h 14.803961 c 0.701004,0 1.340017,-0.39676 1.652927,-1.01693 l 3.193725,-6.33071 z" />
-            </svg>
-
             <svg class="water" viewBox="0 -20 100 170" fill="currentColor" width="85px" height="85px">
-
                 <path d="m 26.62115,103.54115 c 3.750462,6.78643 7.655802,13.18602
                     10.683809,20.21717 15.047292,34.93177 -49.961647,35.01171
                     -35.0720153,0.10268 3.108692,-7.28674 7.126249,-13.51166
@@ -575,19 +530,15 @@
                     -5.004326,-0.07991 -5.008035,2.137473 -5.000616,8.322916 z" />
             </svg>
 
+        </div>
+
+        <div class="topsection">
             <svg id="egg" width="85px" height="85px" viewBox="0 0 1276.6526 1677.307"
-                enable-background="new 0 0 1276.6526 1677.307">
+                enable-background="new 0 0 1276.6526 1677.307" fill="#afb0b1">
                 <g class="eggrotate">
                     <radialGradient id="SVGID_1_" cx="636.3965" cy="840.0656" r="716.6335"
                         gradientTransform="matrix(0.9758 0 0 1 17.3306 0)" gradientUnits="userSpaceOnUse">
-                        <stop offset="0" style="stop-color:#FFFFFF" />
-                        <stop offset="0.1006" style="stop-color:#F5E6DD" />
-                        <stop offset="0.2424" style="stop-color:#E9C8B3" />
-                        <stop offset="0.3875" style="stop-color:#DFAE91" />
-                        <stop offset="0.5344" style="stop-color:#D89B76" />
-                        <stop offset="0.6837" style="stop-color:#D28D63" />
-                        <stop offset="0.8368" style="stop-color:#CF8558" />
-                        <stop offset="1" style="stop-color:#CE8254" />
+                        <stop offset="0" style="stop-color:#a1a1a0" />
                     </radialGradient>
                     <path fill="url(#SVGID_1_)" d="M638.3279,41.4776c-293.1773,0-620.2347,425.4311-608.6061,872.1713
                    c11.2001,430.3124,282.8846,725.0048,608.6061,725.0048c325.7179,0,597.3976-294.6924,608.6024-725.0048
@@ -625,56 +576,77 @@
                    c0.6494,12.3058,0.6318,22.7789,0.4785,31.2593C1247.0023,904.6003,1246.9303,913.6488,1246.9303,913.6488z" />
                 </g>
             </svg>
+        </div>
+
+        <div class="border">
+            <div class="leveltmp">
+                <div class="Gaugetmp">
+                    <svg width="300" height="32" viewBox="0 0 82.514856 8.4666669">
+                        <g inkscape:label="Layer 1" inkscape:groupmode="layer" id="layer1"
+                            transform="translate(-36.216346,-94.239206)">
+                            <path id="rect932"
+                                style="fill:#292727;stroke:none;stroke-width:0.999999;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:1.08;paint-order:stroke fill markers"
+                                d="m -3.2695312,15.203125 v 32 H 308.59766 v -32 z m 3.4335937,1 h 2.9433594 v 30 H 0.1640625 Z m 6.0410156,0 h 2.9433594 v 30 H 6.2050781 Z m 6.0410159,0 h 2.943359 v 30 h -2.943359 z m 6.041015,0 h 2.94336 v 30 h -2.94336 z m 6.041016,0 h 2.943359 v 30 h -2.943359 z m 6.041016,0 H 33.3125 v 30 h -2.943359 z m 6.041015,0 h 2.94336 v 30 h -2.94336 z m 6.041016,0 h 2.943359 v 30 h -2.943359 z m 6.041016,0 h 2.943359 v 30 h -2.943359 z m 6.041015,0 h 2.943359 v 30 h -2.943359 z m 6.042969,0 h 2.941406 v 30 h -2.941406 z m 6.041016,0 h 2.941406 v 30 h -2.941406 z m 6.041015,0 h 2.941406 v 30 h -2.941406 z m 6.041016,0 h 2.941406 v 30 h -2.941406 z m 6.041015,0 h 2.941407 v 30 h -2.941407 z m 6.041016,0 h 2.943359 v 30 H 90.78125 Z m 6.041016,0 h 2.943359 v 30 h -2.943359 z m 6.041014,0 h 2.94336 v 30 h -2.94336 z m 6.04102,0 h 2.94336 v 30 h -2.94336 z m 6.04101,0 h 2.94336 v 30 h -2.94336 z m 6.04102,0 h 2.94336 v 30 h -2.94336 z m 6.04101,0 h 2.94336 v 30 h -2.94336 z m 6.04102,0 h 2.94336 v 30 h -2.94336 z m 6.04102,0 h 2.94335 v 30 h -2.94335 z m 6.04101,0 h 2.94336 v 30 h -2.94336 z m 6.04102,0 h 2.94336 v 30 h -2.94336 z m 6.04297,0 h 2.9414 v 30 h -2.9414 z m 6.04101,0 h 2.94141 v 30 h -2.94141 z m 6.04102,0 h 2.9414 v 30 h -2.9414 z m 6.04101,0 h 2.94141 v 30 h -2.94141 z m 6.04102,0 h 2.94336 v 30 h -2.94336 z m 6.04101,0 h 2.94336 v 30 h -2.94336 z m 6.04102,0 h 2.94336 v 30 h -2.94336 z m 6.04101,0 h 2.94336 v 30 h -2.94336 z m 6.04102,0 h 2.94336 v 30 h -2.94336 z m 6.04102,0 h 2.94336 v 30 h -2.94336 z m 6.04101,0 h 2.94336 v 30 h -2.94336 z m 6.04102,0 h 2.94336 v 30 h -2.94336 z m 6.04101,0 h 2.94336 v 30 h -2.94336 z m 6.04102,0 h 2.94336 v 30 h -2.94336 z m 6.04101,0 h 2.94336 v 30 h -2.94336 z m 6.04102,0 h 2.94336 v 30 h -2.94336 z m 6.04297,0 h 2.9414 v 30 h -2.9414 z m 6.04101,0 h 2.94141 v 30 h -2.94141 z m 6.04102,0 h 2.94141 v 30 h -2.94141 z m 6.04101,0 h 2.94141 v 30 h -2.94141 z m 6.04102,0 H 281 v 30 h -2.94336 z m 6.04102,0 h 2.94336 v 30 h -2.94336 z m 6.04101,0 h 2.94336 v 30 h -2.94336 z m 6.04102,0 h 2.94336 v 30 h -2.94336 z m 6.04101,0 h 2.94336 v 30 h -2.94336 z"
+                                transform="matrix(0.26458333,0,0,0.26458333,37.081409,90.216713)" />
+                        </g>
+                    </svg>
+                </div>
+            </div>
+            <span class="temptxt">C / درجة الحرارة الحالية</span>
+
+
+            <div class="levelhum">
+                <div class="Gaugehum">
+                    <svg width="300" height="32" viewBox="0 0 82.514856 8.4666669">
+
+                        <g inkscape:label="Layer 1" inkscape:groupmode="layer" id="layer1"
+                            transform="translate(-36.216346,-94.239206)">
+                            <path id="rect932"
+                                style="fill:#292727;stroke:none;stroke-width:0.999999;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:1.08;paint-order:stroke fill markers"
+                                d="m -3.2695312,15.203125 v 32 H 308.59766 v -32 z m 3.4335937,1 h 2.9433594 v 30 H 0.1640625 Z m 6.0410156,0 h 2.9433594 v 30 H 6.2050781 Z m 6.0410159,0 h 2.943359 v 30 h -2.943359 z m 6.041015,0 h 2.94336 v 30 h -2.94336 z m 6.041016,0 h 2.943359 v 30 h -2.943359 z m 6.041016,0 H 33.3125 v 30 h -2.943359 z m 6.041015,0 h 2.94336 v 30 h -2.94336 z m 6.041016,0 h 2.943359 v 30 h -2.943359 z m 6.041016,0 h 2.943359 v 30 h -2.943359 z m 6.041015,0 h 2.943359 v 30 h -2.943359 z m 6.042969,0 h 2.941406 v 30 h -2.941406 z m 6.041016,0 h 2.941406 v 30 h -2.941406 z m 6.041015,0 h 2.941406 v 30 h -2.941406 z m 6.041016,0 h 2.941406 v 30 h -2.941406 z m 6.041015,0 h 2.941407 v 30 h -2.941407 z m 6.041016,0 h 2.943359 v 30 H 90.78125 Z m 6.041016,0 h 2.943359 v 30 h -2.943359 z m 6.041014,0 h 2.94336 v 30 h -2.94336 z m 6.04102,0 h 2.94336 v 30 h -2.94336 z m 6.04101,0 h 2.94336 v 30 h -2.94336 z m 6.04102,0 h 2.94336 v 30 h -2.94336 z m 6.04101,0 h 2.94336 v 30 h -2.94336 z m 6.04102,0 h 2.94336 v 30 h -2.94336 z m 6.04102,0 h 2.94335 v 30 h -2.94335 z m 6.04101,0 h 2.94336 v 30 h -2.94336 z m 6.04102,0 h 2.94336 v 30 h -2.94336 z m 6.04297,0 h 2.9414 v 30 h -2.9414 z m 6.04101,0 h 2.94141 v 30 h -2.94141 z m 6.04102,0 h 2.9414 v 30 h -2.9414 z m 6.04101,0 h 2.94141 v 30 h -2.94141 z m 6.04102,0 h 2.94336 v 30 h -2.94336 z m 6.04101,0 h 2.94336 v 30 h -2.94336 z m 6.04102,0 h 2.94336 v 30 h -2.94336 z m 6.04101,0 h 2.94336 v 30 h -2.94336 z m 6.04102,0 h 2.94336 v 30 h -2.94336 z m 6.04102,0 h 2.94336 v 30 h -2.94336 z m 6.04101,0 h 2.94336 v 30 h -2.94336 z m 6.04102,0 h 2.94336 v 30 h -2.94336 z m 6.04101,0 h 2.94336 v 30 h -2.94336 z m 6.04102,0 h 2.94336 v 30 h -2.94336 z m 6.04101,0 h 2.94336 v 30 h -2.94336 z m 6.04102,0 h 2.94336 v 30 h -2.94336 z m 6.04297,0 h 2.9414 v 30 h -2.9414 z m 6.04101,0 h 2.94141 v 30 h -2.94141 z m 6.04102,0 h 2.94141 v 30 h -2.94141 z m 6.04101,0 h 2.94141 v 30 h -2.94141 z m 6.04102,0 H 281 v 30 h -2.94336 z m 6.04102,0 h 2.94336 v 30 h -2.94336 z m 6.04101,0 h 2.94336 v 30 h -2.94336 z m 6.04102,0 h 2.94336 v 30 h -2.94336 z m 6.04101,0 h 2.94336 v 30 h -2.94336 z"
+                                transform="matrix(0.26458333,0,0,0.26458333,37.081409,90.216713)" />
+                        </g>
+                    </svg>
+                </div>
+            </div>
+            <span class="humtxt">% / الرطوبة النسبية</span>
+
+
+            <div class="levelx">
+                <div class="Gaugex">
+                    <svg width="300" height="32" viewBox="0 0 82.514856 8.4666669">
+
+                        <g inkscape:label="Layer 1" inkscape:groupmode="layer" id="layer1"
+                            transform="translate(-36.216346,-94.239206)">
+                            <path id="rect932"
+                                style="fill:#292727;stroke:none;stroke-width:0.999999;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:1.08;paint-order:stroke fill markers"
+                                d="m -3.2695312,15.203125 v 32 H 308.59766 v -32 z m 3.4335937,1 h 2.9433594 v 30 H 0.1640625 Z m 6.0410156,0 h 2.9433594 v 30 H 6.2050781 Z m 6.0410159,0 h 2.943359 v 30 h -2.943359 z m 6.041015,0 h 2.94336 v 30 h -2.94336 z m 6.041016,0 h 2.943359 v 30 h -2.943359 z m 6.041016,0 H 33.3125 v 30 h -2.943359 z m 6.041015,0 h 2.94336 v 30 h -2.94336 z m 6.041016,0 h 2.943359 v 30 h -2.943359 z m 6.041016,0 h 2.943359 v 30 h -2.943359 z m 6.041015,0 h 2.943359 v 30 h -2.943359 z m 6.042969,0 h 2.941406 v 30 h -2.941406 z m 6.041016,0 h 2.941406 v 30 h -2.941406 z m 6.041015,0 h 2.941406 v 30 h -2.941406 z m 6.041016,0 h 2.941406 v 30 h -2.941406 z m 6.041015,0 h 2.941407 v 30 h -2.941407 z m 6.041016,0 h 2.943359 v 30 H 90.78125 Z m 6.041016,0 h 2.943359 v 30 h -2.943359 z m 6.041014,0 h 2.94336 v 30 h -2.94336 z m 6.04102,0 h 2.94336 v 30 h -2.94336 z m 6.04101,0 h 2.94336 v 30 h -2.94336 z m 6.04102,0 h 2.94336 v 30 h -2.94336 z m 6.04101,0 h 2.94336 v 30 h -2.94336 z m 6.04102,0 h 2.94336 v 30 h -2.94336 z m 6.04102,0 h 2.94335 v 30 h -2.94335 z m 6.04101,0 h 2.94336 v 30 h -2.94336 z m 6.04102,0 h 2.94336 v 30 h -2.94336 z m 6.04297,0 h 2.9414 v 30 h -2.9414 z m 6.04101,0 h 2.94141 v 30 h -2.94141 z m 6.04102,0 h 2.9414 v 30 h -2.9414 z m 6.04101,0 h 2.94141 v 30 h -2.94141 z m 6.04102,0 h 2.94336 v 30 h -2.94336 z m 6.04101,0 h 2.94336 v 30 h -2.94336 z m 6.04102,0 h 2.94336 v 30 h -2.94336 z m 6.04101,0 h 2.94336 v 30 h -2.94336 z m 6.04102,0 h 2.94336 v 30 h -2.94336 z m 6.04102,0 h 2.94336 v 30 h -2.94336 z m 6.04101,0 h 2.94336 v 30 h -2.94336 z m 6.04102,0 h 2.94336 v 30 h -2.94336 z m 6.04101,0 h 2.94336 v 30 h -2.94336 z m 6.04102,0 h 2.94336 v 30 h -2.94336 z m 6.04101,0 h 2.94336 v 30 h -2.94336 z m 6.04102,0 h 2.94336 v 30 h -2.94336 z m 6.04297,0 h 2.9414 v 30 h -2.9414 z m 6.04101,0 h 2.94141 v 30 h -2.94141 z m 6.04102,0 h 2.94141 v 30 h -2.94141 z m 6.04101,0 h 2.94141 v 30 h -2.94141 z m 6.04102,0 H 281 v 30 h -2.94336 z m 6.04102,0 h 2.94336 v 30 h -2.94336 z m 6.04101,0 h 2.94336 v 30 h -2.94336 z m 6.04102,0 h 2.94336 v 30 h -2.94336 z m 6.04101,0 h 2.94336 v 30 h -2.94336 z"
+                                transform="matrix(0.26458333,0,0,0.26458333,37.081409,90.216713)" />
+                        </g>
+                    </svg>
+                </div>
+            </div>
+            <span class="xtxt">الوقت المتبقي للتقليب</span>
 
         </div>
 
-        <hr style="height:2px;border-width:0;color:gray;background-color:gray;width: 80%;">
-
-        <div class="topsection">
-            <div class="meters">
-                <div class="thermometerRed_base">
-                    <div class="thermometerRed_liquid"></div>
-                    <div class="Redtube"> </div>
-                    <div class="temptxt"></div>
-                </div>
-
-                <div class="thermometerBlue_base">
-                    <div class="thermometerBlue_liquid"></div>
-                    <div class="tube"> </div>
-                    <div class="humtxt"></div>
-                </div>
-            </div>
-        </div>
-
-        <hr style="height:2px;border-width:0;color:gray;background-color:gray;width: 80%;">
-
-        <div class="topsection">
-
-            <div class="turningbase">
-                <div class="turninglevel"></div>
-                <div class="turningtxt"></div>
-            </div>
-
-            <div>
-                <ul class="txtlist">
-                    <li id="aa"> درجة الحرارة المطلوبة *</li>
-                    <li id="bb"> انذار عندارتفاع الحرارة عن *</li>
-                    <li id="cc"> انذار عند انخفاض الحرارة عن *</li>
-                    <li id="dd"> انذار عند ارتفاع الرطوبة عن *</li>
-                    <li id="ee"> انذار عند انخفاض الرطوبة عن *</li>
-                    <li id="ff"> حالة التقليب *</li>
-                    <li id="gg"> عدد مرات التقليب باليوم *</li>
-                    <li id="hh"> فترة التفقيس * </li>
-                    <li id="ii"> تاريخ وضع البيض *</li>
-                    <li id="jj"> الايام المتبقية للتفقيس*</li>
-                </ul>
-            </div>
-
+        <div class="txtgroup">
+            <ul class="txtlist">
+                <li id="aa"> درجة الحرارة المطلوبة .</li>
+                <li id="bb"> انذار عند ارتـفـاع الـحـرارة عن .</li>
+                <li id="cc"> انذار عند انخفاض الحـرارة عن .</li>
+                <li id="dd"> انذار عند ارتـفـاع الرطـوبة عن .</li>
+                <li id="ee"> انذار عند انخفاض الرطوبة عن .</li>
+                <li id="ff"> حالة التقليب .</li>
+                <li id="gg"> عدد مرات التقليب باليوم .</li>
+                <li id="hh"> فترة التفقيس . </li>
+                <li id="ii"> تاريخ وضع البيض .</li>
+                <li id="jj"> الايام المتبقية للتفقيس.</li>
+            </ul>
             <button type="button" class="setting" onclick="settingFunction()">الضبط
-                
+
             </button>
-            <button type="button" class="clocksetting" onclick="clocksetting()">ضبط الساعة</button>
-           
+            <button type="button" class="StartHatching" onclick="StartHatching()">بدء التفقيس</button>
 
             <div class="setting_list" id="mysetting" style="z-index: 3;">
                 <ul class="slist">
@@ -734,13 +706,13 @@
                         </div>
 
                     </li>
-                    <li>مرة باليوم
-                        <span id="turningtime_point">2</span>
+                    <li>
+                        <span id="turningtime_point"></span>
                         <div class="turningtime">
-                            <div id="turningtime_minval">2</div>
+                            <div id="turningtime_minval"></div>
                             <input id="turningtime_slide" oninput="updateturningtime_fuc()" style="width: 70%;"
                                 type="range" value="2" step="1" min="2" max="12">
-                            <div id="turningtime_maxval">12</div>
+                            <div id="turningtime_maxval"></div>
 
                         </div>
                     </li>
@@ -760,7 +732,6 @@
                             <input type="datetime-local" id="birthday" value="2021-03-26T20:47"
                                 min="2020-10-06T22:22:55" max="2054-11-16T21:25:33">
                         </div>
-
                     </li>
 
                     <li class="undo" onclick="settingFunction()">رجوع
@@ -770,10 +741,9 @@
                 </ul>
 
             </div>
-
-            <div id="demo"></div>
-
         </div>
+        <div id="demo">17/11/2020</div>
+        <div class="network">Staus</div>
     </div>
 
     <script>
@@ -787,7 +757,7 @@
         var notbol;
         var setturningtime, _setturningtime;
         var hach, _hach;
-        var days;
+        var days = 0;
         ///////////////
         var stat = false;
         ////////////////
@@ -808,10 +778,8 @@
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
-
                     setData(this.responseText);
-                    // document.getElementById("demo").innerText = "متصل";
-
+                    checkConnection();
                 }
                 //  else {
                 //     document.getElementById("demo").innerText = "غير متصل";
@@ -819,7 +787,6 @@
             };
             xhttp.open("GET", "/getdata", true);
             xhttp.send();
-
         }
         document.addEventListener("DOMContentLoaded", () => {
             getParameters();
@@ -855,36 +822,54 @@
             document.getElementById("hTempAlarm_slidetemp").min = (spTemp2 * 1.00);
             document.getElementById("hTempAlarm_slidetemp").max = ((spTemp2 * 1.00) + 1.50);
             document.getElementById("hTempAlarm_slidetemp").value = spthi;
-            document.getElementById("hTempAlarm_minval").innerText = document.getElementById("hTempAlarm_slidetemp").min;
-            document.getElementById("hTempAlarm_point").innerText = document.getElementById("hTempAlarm_slidetemp").value;
-            document.getElementById("hTempAlarm_maxval").innerText = document.getElementById("hTempAlarm_slidetemp").max;
+            document.getElementById("hTempAlarm_minval").innerText = document.getElementById("hTempAlarm_slidetemp")
+                .min;
+            document.getElementById("hTempAlarm_point").innerText = document.getElementById("hTempAlarm_slidetemp")
+                .value;
+            document.getElementById("hTempAlarm_maxval").innerText = document.getElementById("hTempAlarm_slidetemp")
+                .max;
             /////////////low temp alarm
             document.getElementById("lowTempAlarm_slidetemp").min = ((spTemp2 * 1.00) - 1.50);
             document.getElementById("lowTempAlarm_slidetemp").max = (spTemp2 * 1.00);
             document.getElementById("lowTempAlarm_slidetemp").value = sptlo;
-            document.getElementById("lowTempAlarm_minval").innerText = document.getElementById("lowTempAlarm_slidetemp").min;
-            document.getElementById("lowTempAlarm_point").innerText = document.getElementById("lowTempAlarm_slidetemp").value;
-            document.getElementById("lowTempAlarm_maxval").innerText = document.getElementById("lowTempAlarm_slidetemp").max;
+            document.getElementById("lowTempAlarm_minval").innerText = document.getElementById("lowTempAlarm_slidetemp")
+                .min;
+            document.getElementById("lowTempAlarm_point").innerText = document.getElementById("lowTempAlarm_slidetemp")
+                .value;
+            document.getElementById("lowTempAlarm_maxval").innerText = document.getElementById("lowTempAlarm_slidetemp")
+                .max;
             ////////////////////////////////////////////////////////////
             document.getElementById("hihumidityAlarm_slide").value = humhi;
-            document.getElementById("hihumidityAlarm_point").innerText = '%' + document.getElementById("hihumidityAlarm_slide").value;
-            document.getElementById("hihumidityAlarm_minval").innerText = document.getElementById("hihumidityAlarm_slide").min + '%';
-            document.getElementById("hihumidityAlarm_maxval").innerText = document.getElementById("hihumidityAlarm_slide").max + '%';
+            document.getElementById("hihumidityAlarm_point").innerText = '%' + document.getElementById(
+                "hihumidityAlarm_slide").value;
+            document.getElementById("hihumidityAlarm_minval").innerText = document.getElementById(
+                "hihumidityAlarm_slide").min + '%';
+            document.getElementById("hihumidityAlarm_maxval").innerText = document.getElementById(
+                "hihumidityAlarm_slide").max + '%';
             ///////////////////////////////////////////////////////////
             document.getElementById("lowhumidityAlarm_slide").value = humlo;
-            document.getElementById("lowhumidityAlarm_point").innerText = '%' + document.getElementById("lowhumidityAlarm_slide").value;
-            document.getElementById("lowhumidityAlarm_minval").innerText = document.getElementById("lowhumidityAlarm_slide").min + '%';
-            document.getElementById("lowhumidityAlarm_maxval").innerText = document.getElementById("lowhumidityAlarm_slide").max + '%';
+            document.getElementById("lowhumidityAlarm_point").innerText = '%' + document.getElementById(
+                "lowhumidityAlarm_slide").value;
+            document.getElementById("lowhumidityAlarm_minval").innerText = document.getElementById(
+                "lowhumidityAlarm_slide").min + '%';
+            document.getElementById("lowhumidityAlarm_maxval").innerText = document.getElementById(
+                "lowhumidityAlarm_slide").max + '%';
             /////////////////////////////////////////////////////////////
             if (onoff) {
 
                 document.getElementById("off").innerText = "التقليب يعمل";
                 document.getElementById("off").style = "background: #34db01;;box-shadow: 0px 0px 3px 3px #00ff22;";
                 document.getElementById("turningtime_slide").value = period;
-                document.getElementById("turningtime_point").innerText = document.getElementById("turningtime_slide").value + " ساعه" + " (" + `${(24 / document.getElementById("turningtime_slide").value).toFixed(2)} مرة باليوم )`;
+                document.getElementById("turningtime_minval").innerText = document.getElementById("turningtime_slide")
+                    .min;
+                document.getElementById("turningtime_maxval").innerText = document.getElementById("turningtime_slide")
+                    .max;
+                document.getElementById("turningtime_point").innerText =
+                    ` كل ${document.getElementById("turningtime_slide").value} ساعه ` + " (" +
+                    `${(24 / document.getElementById("turningtime_slide").value).toFixed(2)} مرة باليوم )`;
+
                 setturningtime = document.getElementById("turningtime_slide").value;
-            }
-            else {
+            } else {
 
                 document.getElementById("off").innerText = "التقليب لا يعمل";
                 document.getElementById("off").style = "background-color:#b80101;";
@@ -894,7 +879,8 @@
             }
             /////////////////////
             document.getElementById("hatching_slide").value = haching;
-            document.getElementById("hatching_point").innerText = `${(document.getElementById("hatching_slide").value)} يوم`;
+            document.getElementById("hatching_point").innerText =
+                `${(document.getElementById("hatching_slide").value)} يوم`;
             ////////////////////////////////////////////////////////////
             setTemp = document.getElementById("setTmp_slidetemp").value;
             sethiTemp = document.getElementById("hTempAlarm_slidetemp").value;
@@ -904,14 +890,15 @@
 
             hach = document.getElementById("hatching_slide").value;
 
-            var sminut,shour,sday,smonth;
+            var sminut, shour, sday, smonth;
             month < 10 ? smonth = "0" + month : smonth = month;
             day < 10 ? sday = "0" + day : sday = day;
             hour < 10 ? shour = "0" + hour : shour = hour;
             minut < 10 ? sminut = "0" + minut : sminut = minut;
-            document.getElementById("ii").innerText = year + "/" + month + "/" + day + ". " + hour + ":" + minut + " = تاريخ وضع البيض *";
+            document.getElementById("ii").innerText = year + "/" + month + "/" + day + ". " + hour + ":" + minut +
+                " = تاريخ وضع البيض *";
             document.getElementById("birthday").value = year + "-" + smonth + "-" + sday + "T" + shour + ":" + sminut;
-            
+
             _setTemp = spTemp1;
             _sethiTemp = spthi;
             _setloTemp = sptlo;
@@ -930,16 +917,22 @@
             document.getElementById("hTempAlarm_slidetemp").min = (_setTemp * 1.00);
             document.getElementById("hTempAlarm_slidetemp").max = ((_setTemp * 1.00) + 1.50);
             document.getElementById("hTempAlarm_slidetemp").value = ((_setTemp * 1.00) + 0.25);
-            document.getElementById("hTempAlarm_minval").innerText = document.getElementById("hTempAlarm_slidetemp").min;
-            document.getElementById("hTempAlarm_point").innerText = document.getElementById("hTempAlarm_slidetemp").value;
-            document.getElementById("hTempAlarm_maxval").innerText = document.getElementById("hTempAlarm_slidetemp").max;
+            document.getElementById("hTempAlarm_minval").innerText = document.getElementById("hTempAlarm_slidetemp")
+                .min;
+            document.getElementById("hTempAlarm_point").innerText = document.getElementById("hTempAlarm_slidetemp")
+                .value;
+            document.getElementById("hTempAlarm_maxval").innerText = document.getElementById("hTempAlarm_slidetemp")
+                .max;
             ////////////////////////
             document.getElementById("lowTempAlarm_slidetemp").max = _setTemp;
             document.getElementById("lowTempAlarm_slidetemp").value = (_setTemp * 1.0) - 0.25;
             document.getElementById("lowTempAlarm_slidetemp").min = (_setTemp * 1.0) - 1.5;
-            document.getElementById("lowTempAlarm_minval").innerText = document.getElementById("lowTempAlarm_slidetemp").min;
-            document.getElementById("lowTempAlarm_point").innerText = document.getElementById("lowTempAlarm_slidetemp").value;
-            document.getElementById("lowTempAlarm_maxval").innerText = document.getElementById("lowTempAlarm_slidetemp").max;
+            document.getElementById("lowTempAlarm_minval").innerText = document.getElementById("lowTempAlarm_slidetemp")
+                .min;
+            document.getElementById("lowTempAlarm_point").innerText = document.getElementById("lowTempAlarm_slidetemp")
+                .value;
+            document.getElementById("lowTempAlarm_maxval").innerText = document.getElementById("lowTempAlarm_slidetemp")
+                .max;
             _setTemp = document.getElementById("setTmp_slidetemp").value;
             _sethiTemp = document.getElementById("hTempAlarm_slidetemp").value;
             _setloTemp = document.getElementById("lowTempAlarm_slidetemp").value;
@@ -947,33 +940,43 @@
 
         function updatehTempAlarm_fuc() {
             _sethiTemp = document.getElementById("hTempAlarm_slidetemp").value;
-            document.getElementById("hTempAlarm_point").innerText = document.getElementById("hTempAlarm_slidetemp").value;
+            document.getElementById("hTempAlarm_point").innerText = document.getElementById("hTempAlarm_slidetemp")
+                .value;
         }
 
         function updatelowTempAlarm_fuc() {
             _setloTemp = document.getElementById("lowTempAlarm_slidetemp").value;
-            document.getElementById("lowTempAlarm_point").innerText = document.getElementById("lowTempAlarm_slidetemp").value;
+            document.getElementById("lowTempAlarm_point").innerText = document.getElementById("lowTempAlarm_slidetemp")
+                .value;
         }
 
         function updatehihumidityAlarm_fuc() {
 
-            if ((document.getElementById("hihumidityAlarm_slide").value) < (document.getElementById("lowhumidityAlarm_slide").value + "5")) {
-                document.getElementById("lowhumidityAlarm_slide").value = document.getElementById("hihumidityAlarm_slide").value - "5";
+            if ((document.getElementById("hihumidityAlarm_slide").value) < (document.getElementById(
+                    "lowhumidityAlarm_slide").value + "5")) {
+                document.getElementById("lowhumidityAlarm_slide").value = document.getElementById(
+                    "hihumidityAlarm_slide").value - "5";
             }
-            document.getElementById("hihumidityAlarm_point").innerText = '%' + document.getElementById("hihumidityAlarm_slide").value;
-            document.getElementById("lowhumidityAlarm_point").innerText = '%' + document.getElementById("lowhumidityAlarm_slide").value;
+            document.getElementById("hihumidityAlarm_point").innerText = '%' + document.getElementById(
+                "hihumidityAlarm_slide").value;
+            document.getElementById("lowhumidityAlarm_point").innerText = '%' + document.getElementById(
+                "lowhumidityAlarm_slide").value;
             _sethihum = document.getElementById("hihumidityAlarm_slide").value;
             _setlohum = document.getElementById("lowhumidityAlarm_slide").value;
         }
 
         function updatelowhumidityAlarm_fuc() {
 
-            if ((document.getElementById("lowhumidityAlarm_slide").value) > (document.getElementById("hihumidityAlarm_slide").value - "5")) {
+            if ((document.getElementById("lowhumidityAlarm_slide").value) > (document.getElementById(
+                    "hihumidityAlarm_slide").value - "5")) {
 
-                document.getElementById("lowhumidityAlarm_slide").value = document.getElementById("hihumidityAlarm_slide").value - "5";
+                document.getElementById("lowhumidityAlarm_slide").value = document.getElementById(
+                    "hihumidityAlarm_slide").value - "5";
             }
-            document.getElementById("hihumidityAlarm_point").innerText = '%' + document.getElementById("hihumidityAlarm_slide").value;
-            document.getElementById("lowhumidityAlarm_point").innerText = '%' + document.getElementById("lowhumidityAlarm_slide").value;
+            document.getElementById("hihumidityAlarm_point").innerText = '%' + document.getElementById(
+                "hihumidityAlarm_slide").value;
+            document.getElementById("lowhumidityAlarm_point").innerText = '%' + document.getElementById(
+                "lowhumidityAlarm_slide").value;
             _sethihum = document.getElementById("hihumidityAlarm_slide").value;
             _setlohum = document.getElementById("lowhumidityAlarm_slide").value;
         }
@@ -983,21 +986,28 @@
             if (bb) {
 
                 document.getElementById("off").innerText = "التقليب يعمل";
-                document.getElementById("off").style = "color: black;  background: #2ec002;box-shadow:  0px 0px 3px 3px #00ff22";
+                document.getElementById("off").style =
+                    "color: black;  background: #2ec002;box-shadow:  0px 0px 3px 3px #00ff22";
                 _bol = true;
                 notbol = !_bol;
                 document.getElementById("turningtime_slide").value = _setturningtime;
-                document.getElementById("turningtime_point").innerText = " ساعه" + " (" + `${(24 / document.getElementById("turningtime_slide").value).toFixed(2)} مرة باليوم )` + document.getElementById("turningtime_slide").value;
+                document.getElementById("turningtime_minval").innerText = document.getElementById("turningtime_slide")
+                    .min;
+                document.getElementById("turningtime_maxval").innerText = document.getElementById("turningtime_slide")
+                    .max;
+                document.getElementById("turningtime_point").innerText =
+                    ` كل ${document.getElementById("turningtime_slide").value} ساعه ` + " (" +
+                    `${(24 / document.getElementById("turningtime_slide").value).toFixed(2)} مرة باليوم )`;
                 setturningtime = (24 / document.getElementById("turningtime_slide").value).toFixed(2);
-            }
-            else {
+            } else {
                 document.getElementById("off").innerText = "التقليب لا يعمل";
                 document.getElementById("off").style = "background-color:#b80101;";
-                _bol = false;
-                notbol = !_bol;
                 document.getElementById("turningtime_slide").value = 0;
                 document.getElementById("turningtime_point").innerText = "غير متاح";
                 setturningtime = document.getElementById("turningtime_slide").value;
+                _bol = false;
+                notbol = !_bol;
+
             }
 
         }
@@ -1007,16 +1017,22 @@
                 document.getElementById("turningtime_slide").value = 0;
                 document.getElementById("turningtime_point").innerText = "غير متاح";
                 _setturningtime = 0;
-            }
-            else {
-                document.getElementById("turningtime_point").innerText = ` كل ${document.getElementById("turningtime_slide").value} ساعه ` + " (" + `${(24 / document.getElementById("turningtime_slide").value).toFixed(2)} مرة باليوم )`;
+            } else {
+                document.getElementById("turningtime_minval").innerText = document.getElementById("turningtime_slide")
+                    .min;
+                document.getElementById("turningtime_maxval").innerText = document.getElementById("turningtime_slide")
+                    .max;
+                document.getElementById("turningtime_point").innerText =
+                    ` كل ${document.getElementById("turningtime_slide").value} ساعه ` + " (" +
+                    `${(24 / document.getElementById("turningtime_slide").value).toFixed(2)} مرة باليوم )`;
                 _setturningtime = document.getElementById("turningtime_slide").value;
             }
 
         }
 
         function updatehatching_fuc() {
-            document.getElementById("hatching_point").innerText = `${(document.getElementById("hatching_slide").value)} يوم`;
+            document.getElementById("hatching_point").innerText =
+                `${(document.getElementById("hatching_slide").value)} يوم`;
             _hach = document.getElementById("hatching_slide").value;
         }
 
@@ -1024,8 +1040,7 @@
             var F;
             if (_bol) {
                 T = "يعمل";
-            }
-            else {
+            } else {
                 T = "لا يعمل";
             }
             document.getElementById("aa").innerText = `.C° ${(_setTemp)}   ...... درجـة الـحـرارة المـطلـوبة *`;
@@ -1034,14 +1049,12 @@
             document.getElementById("dd").innerText = `.%  ${(_sethihum)}  ...... انذار عنـد ارتفاع الرطـوبة  *`;
             document.getElementById("ee").innerText = `.%  ${(_setlohum)}  ...... انذار عند انخفاض الرطوبة  *`;
             document.getElementById("ff").innerText = `.حالة التقليب = ${(T)}   *`;
-            document.getElementById("gg").innerText = `.عدد مرات التقليب = ${(24 / _setturningtime).toFixed(2)}  مرة باليوم الواحد *`;
+            document.getElementById("gg").innerText =
+                `.عدد مرات التقليب = ${(24 / _setturningtime).toFixed(2)}  مرة باليوم الواحد *`;
             document.getElementById("hh").innerText = `.فترة التفقيس = ${(_hach)}  يوم *`;
-
             document.getElementById("jj").innerText = `.الايام المتبقية للتفقيس = ${(days)}  يوم *`;
         } // 2021-03-26T20:47
-
         //////////////////////////////////////
-
         function settingFunction() {
 
             var setting = document.getElementById("mysetting");
@@ -1049,11 +1062,7 @@
             getParameters();
         }
 
-        function clocksetting(){
-            // <input type="time" id="appt" name="appt">
-        }
-
-        function savefunc() {///should take the copy of parameters and set to original 
+        function savefunc() { ///should take the copy of parameters and set to original 
             // 2021-03-26T20:47
             calender = document.getElementById("birthday").value;
             var _x = calender.slice(0, 4);
@@ -1063,7 +1072,6 @@
             var _hour = calender.slice(11, 13);
             var _minut = calender.slice(14, 16);
             // document.getElementById("birthday").value=calender;
-
             setTemp = _setTemp;
             sethiTemp = _sethiTemp;
             setloTemp = _setloTemp;
@@ -1094,6 +1102,7 @@
                 "&l=" + _day +
                 "&m=" + _hour +
                 "&n=" + _minut, true);
+            // console.log('setturning time = '+setturningtime);////in hours
             xhttp.send();
             // xhttp.open("POST", "/saveparam", true);
             // xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
@@ -1102,20 +1111,24 @@
         }
 
         function setData(jsonStr) {
-
             var myObj = JSON.parse(jsonStr);
-
-            days = myObj.DAYS;
-
+            console.log(myObj);
+            var Elapsed_time = (myObj.Ehours * 3600) + (myObj.Eminuts * 60) + (myObj.Esecond);
+            var Total_time = _setturningtime * 3600;
             var mask = 1;
-
-            document.getElementById("demo").innerText = `${(myObj.YEAR)}/${(myObj.MONTH)}/${(myObj.DINM)}/ ${(myObj.HOURS)}:${(myObj.MINUT)}:${(myObj.SEC)}`;
-          
+            // days = myObj.Rdays;
+            days = 14;
+            document.getElementById("jj").innerText = `.الايام المتبقية للتفقيس = ${(days)}  يوم *`;
+            document.getElementById("demo").innerText =
+                `${(myObj.YEAR)}/${(myObj.MONTH)}/${(myObj.DINM)}.... ${(myObj.HOURS)}:${(myObj.MINUT)}:${(myObj.SEC)}`;
             if (bol) {
-                document.querySelector(".turningtxt ").textContent = `${(myObj.SEC)} = الوقت المتبقي للتقليب`;
-                document.querySelector(".turninglevel ").style = `width:${((myObj.SEC / 60) * 100)}%`;
 
-                if (myObj.SEC == 0) {
+                document.querySelector(".xtxt").textContent =
+                    ` ${(myObj.Ehours)}:${(myObj.Eminuts)}:${(myObj.Esecond)} = الوقت المتبقي للتقليب`;
+
+                document.querySelector(".levelx ").style = `width:${((Elapsed_time / Total_time) * 300)}px`;
+
+                if (myObj.Esecond == 0 && myObj.Eminuts == 0 && myObj.Ehours == 0) {
 
                     document.querySelector(".eggrotate").style = ` animation-iteration-count:${4} `;
 
@@ -1129,75 +1142,112 @@
                     }
                     stat = !stat;
                 }
+            } else {
+                document.querySelector(".xtxt").textContent = `التقليب متوقف`;
+                document.querySelector(".levelx").style = `width:${(10)}px`;
             }
-            else {
-                document.querySelector(".turningtxt ").textContent = `التقليب متوقف `;
-                document.querySelector(".turninglevel ").style = `width:${(100)}%`;
+            ///////////////////////////
+            if (myObj.TEMP > 90.0 || myObj.TEMP < 0.0) {
+                return;
+            } else {
+
+                document.querySelector(".temptxt").textContent =
+                    `${(myObj.TEMP).toFixed(1)}°C ... درجة الحرارة الحالية`;
+                document.querySelector(".leveltmp").style = `width:${((myObj.TEMP)*3)}px`;
             }
             ///////////////////////////
             if (myObj.HUMI > 90 || myObj.HUMI < 0) {
                 return;
             } else {
-                document.querySelector(".humtxt ").textContent = `% ${(myObj.HUMI)} = الرطوبة الحالية`;
 
-                if ((myObj.HUMI > setlohum) && (myObj.HUMI < sethihum)) {
+                document.querySelector(".humtxt").textContent =
+                    `${(myObj.HUMI).toFixed(0)}% ... الرطوبة النسبية`;
+                document.querySelector(".levelhum").style = `width:${((myObj.HUMI)*3)}px`;
 
-                    document.querySelector(".thermometerBlue_liquid ").style = ` background-color: rgb(0, 0, 255); width:${myObj.HUMI}% ; 
-                    box-shadow: -1px -1px 1px -1px rgba(216, 215, 215, 0.247)inset, 4px 4px 5px 1px rgba(1, 21, 85, 0.986)inset, 3px 4px 10px -3px rgb(0, 162, 255), 0px 7px 0.1px 0px rgba(255, 255, 255, 0.616)inset`;
-
+                if (myObj.HUMI >= _sethihum || myObj.HUMI <= _sethihum) {
+                    document.querySelector(".water ").style.color = " #0077ff ";
                 } else {
-
-                    document.querySelector(".thermometerBlue_liquid ").style = `background-color: rgb(173, 0, 0); width:${myObj.HUMI}% ; 
-                    box-shadow: -1px -1px 1px -1px rgba(216, 215, 215, 0.247)inset, 4px 4px 5px 1px rgba(85, 1, 1, 0.986)inset, 3px 4px 10px -3px rgb(255, 0, 0), 0px 7px 0.1px 0px rgba(255, 255, 255, 0.616)inset`;
+                    document.querySelector(".water ").style.color = " #bebebe ";
                 }
             }
-
-            if (myObj.TEMP > 90.0 || myObj.TEMP < 0.0) {
-                return;
-            } else {
-                document.querySelector(".temptxt ").textContent = `C° ${((myObj.TEMP).toFixed(2))} = الحرارة الحالية`;
-
-                if ((myObj.TEMP > setloTemp) && (myObj.TEMP < sethiTemp)) {
-
-                    document.querySelector(".thermometerRed_liquid ").style = `background-color: #10ac10 ; width:${myObj.TEMP}% ; box-shadow: -1px -1px 1px -1px rgba(216, 215, 215, 0.247)inset, 4px 4px 5px 1px rgba(8, 85, 1, 0.986)inset, 3px 4px 10px -3px rgb(51, 255, 0), 0px 7px 0.1px 0px rgba(255, 255, 255, 0.616)inset`;
-
-                } else {
-
-                    document.querySelector(".thermometerRed_liquid ").style = `background-color: rgb(173, 0, 0); width:${myObj.TEMP}% ; box-shadow: -1px -1px 1px -1px rgba(216, 215, 215, 0.247)inset, 4px 4px 5px 1px rgba(85, 1, 1, 0.986)inset, 3px 4px 10px -3px rgb(255, 0, 0), 0px 7px 0.1px 0px rgba(255, 255, 255, 0.616)inset`;
-                }
-            }
-
+            ///////////////////////////
             mask = 1 << 1;
-            if ((myObj.GROP & mask) != 0) {///WATER=D1
-                document.querySelector(".water ").style.color = " #0077ff ";
-            } else {
-                document.querySelector(".water ").style.color = " #31343b ";
-            }
+            // if ((myObj.GROP & mask) != 0) { ///WATER = D1
+            //     document.querySelector(".water ").style.color = " #0077ff ";
+            // } else {
+            //     document.querySelector(".water ").style.color = " #bebebe ";
+            // }
 
+            ///////////////////////////
             mask = 1 << 2;
-            if ((myObj.GROP & mask) != 0) {///lamp=D2
+            if ((myObj.GROP & mask) != 0) { ///lamp = D2
                 document.querySelector(".lamp").style = `animation-name: lampon`;
             } else {
                 document.querySelector(".lamp").style = `animation-name: lampoff`;
             }
-
+            ///////////////////////////
             mask = 1 << 3;
-            if ((myObj.GROP & mask) != 0) {///DOOR=D3
+            if ((myObj.GROP & mask) != 0) { ///DOOR = D3
                 document.querySelector(".door ").style.color = " #e41d0f ";
             } else {
-                document.querySelector(".door ").style.color = " #31343b ";
+                document.querySelector(".door ").style.color = " #bebebe ";
             }
-
+            ///////////////////////////
             mask = 1 << 5;
-            if ((myObj.GROP & mask) != 0) {///FAN=D5
+            if ((myObj.GROP & mask) != 0) { ///FAN=D5
                 document.querySelector("#fanpath ").style = `animation-duration:${3}s`;
-                document.querySelector("#fanpath ").style.color = " #fcfc01 ";
+                document.querySelector("#fanpath ").style.color = " #bebebe ";
             } else {
                 document.querySelector("#fanpath ").style = `animation-duration:${0}s`;
-                document.querySelector("#fanpath ").style.color = " #31343b ";
+                document.querySelector("#fanpath ").style.color = " #ff0404 ";
             }
 
         }
+        //creat a function to check if internet is available
+        function checkConnection() {
+            var networkState = navigator.connection.type;
+            var states = {};
+            states[Connection.UNKNOWN] = 'Unknown connection';
+            states[Connection.ETHERNET] = 'Ethernet connection';
+            states[Connection.WIFI] = 'WiFi connection';
+            states[Connection.CELL_2G] = 'Cell 2G connection';
+            states[Connection.CELL_3G] = 'Cell 3G connection';
+            states[Connection.CELL_4G] = 'Cell 4G connection';
+            states[Connection.CELL] = 'Cell generic connection';
+            states[Connection.NONE] = 'No network connection';
+            if (states[networkState] == 'No network connection') {
+                alert('No internet connection');
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+    </script>
+
+    <script>
+        function settingFunction() {
+            var setting = document.getElementById("mysetting");
+            setting.classList.toggle("show");
+            getParameters();
+        }
+        setInterval(() => {
+            let level = document.querySelector(".leveltmp");
+            let level2 = document.querySelector(".levelhum");
+            let levelx = document.querySelector(".levelx");
+            var number = Math.random() * 100;
+            var ran = (number) * 300 / 100.0;
+            var number2 = Math.random() * 100;
+            var ran2 = (number2) * 300 / 100.0;
+            var numberx = Math.random() * 100;
+            var ranx = (numberx) * 300 / 100.0;
+            level.style = `width: ${ran}px;`
+            level2.style = `width: ${ran2}px;`
+            levelx.style = `width: ${ranx}px;`
+            document.querySelector(".temptxt").textContent = `${(number).toFixed(1)}C ... درجة الحرارة الحالية`;
+            document.querySelector(".humtxt").textContent = `${(number2).toFixed(0)}% ... الرطوبة النسبية`;
+            document.querySelector(".xtxt").textContent = `${(numberx).toFixed(0)} ... الوقت المتبقي للتقليب`;
+        }, 1500);
     </script>
 </body>
 

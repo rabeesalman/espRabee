@@ -9,8 +9,8 @@
 #include <Wire.h>
 #include <Arduino_JSON.h>
 ESP8266WebServer server(80);
-// const char* ssid = "TP-Link";
-// const char* password = "15112020";
+const char *ssid = "TP-Link";
+const char *password = "15112020";
 /////////////////////
 String jsondata = "";
 String jsonparameter = "";
@@ -18,7 +18,7 @@ JSONVar dataObject;
 JSONVar param;
 //////////////////////
 struct data_Rx_from_Arduino_toesp
-{ /////12 data 16 byte total
+{ // 12 data 16 byte total
     float TEMP;
     uint16_t year;
     uint8_t HUMI;
@@ -33,19 +33,22 @@ struct data_Rx_from_Arduino_toesp
     uint8_t GROP;
     /// GROP= 0, 0, FAN, BATT, DOOR,LAMP,WATER,EGG
     ////////  D7,D6, D5,  D4,  D3,  D2,  D1,   D0
-} sensors = {0.0f, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    uint8_t Esecond;
+    uint8_t Eminuts;
+    uint8_t Ehours;
+} sensors = {0.0f, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
 struct parameter_from_Arduino_toesp
 {
     float SETTMP;
     float TMPHI;
     float TMPLO;
-    uint8_t PERIOD; //IN HOURS
+    uint8_t PERIOD; // IN HOURS
     uint8_t HHI;
     uint8_t HLO;
     uint8_t HACHIN;
     bool TURN;
-    ///RTC data
+    /// RTC data
     uint8_t YEAR;
     uint8_t MONTH;
     uint8_t DAY;
@@ -59,12 +62,12 @@ struct tosaveinarduino
     float SETTMP;
     float TMPHI;
     float TMPLO;
-    uint8_t PERIOD; //IN HOURS
+    uint8_t PERIOD; // IN HOURS
     uint8_t HHI;
     uint8_t HLO;
     uint8_t HACHIN;
     bool TURN;
-    ///RTC data
+    /// RTC data
     uint8_t YEAR;
     uint8_t MONTH;
     uint8_t DAY;
@@ -86,6 +89,9 @@ void data_Creation()
     dataObject["DINM"] = sensors.day_inmonth;
     dataObject["MONTH"] = sensors.month_inyear;
     dataObject["GROP"] = sensors.GROP;
+    dataObject["Esecond"] = sensors.Esecond;
+    dataObject["Eminuts"] = sensors.Eminuts;
+    dataObject["Ehours"] = sensors.Ehours;
     jsondata = JSON.stringify(dataObject);
 }
 
@@ -233,19 +239,19 @@ void saveparameter()
 
 void setup()
 {
-
     Wire.begin(0, 2);
-    delay(1000);
-    IPAddress local_IP(192, 168, 4, 4);
-    IPAddress gate_way(192, 168, 4, 1);
-    IPAddress subnet(255, 255, 255, 0);
-    WiFi.softAPConfig(local_IP, gate_way, subnet);
-    WiFi.mode(WIFI_AP);
-    WiFi.softAP("JSON", "");
+    delay(300);
+    // IPAddress local_IP(192, 168, 4, 4);
+    // IPAddress gate_way(192, 168, 4, 1);
+    // IPAddress subnet(255, 255, 255, 0);
+    // WiFi.softAPConfig(local_IP, gate_way, subnet);
+    // WiFi.mode(WIFI_AP);
+    // WiFi.softAP("JSON", "");
     MDNS.begin("esp8266");
-    //  WiFi.begin(ssid, password);
-    delay(500);
-    server.on("/", []() { server.send_P(200, "text/html", test); });
+    WiFi.begin(ssid, password);
+    delay(300);
+    server.on("/", []()
+              { server.send_P(200, "text/html", test); });
     server.on("/getparam", getParameters);
     server.on("/getdata", getData);
     server.on("/saveparam", saveparameter);
